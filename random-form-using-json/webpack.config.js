@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 module.exports = {
-   entry: './app.js',
+   entry: './randomformapp.js',
    output: {
-     filename: './dist/bundle.js'
+     filename: './dist/app.js'
    }
 };
