@@ -16,44 +16,28 @@
   <div class="header">
 
        <h1> Random Form </h1>
-
   </div>
-  <div class="container center" ng-controller="getFormCtrl">
+  
+  <div class="container" ng-controller="getFormCtrl">
             <!-- Form -->
-
-     <button ng-click="clickButton()" class="btn">Get Form</button>
-
-             <div class="form-container center">
-                      <form name="myform" >  
-                          <label for="firstName">Label</label>
-                          <input id="firstName" type="text" >
-                          <button>Submit</button>
-                      </form>
-             </div>
-             <form class="myForm" ng-repeat="field in form_dt.data.data.form_fields">
-
-              <div class="fields">
-
-                       <h1> ID : {{form_dt.data.data.form_id}}</h1>
-                       <h1> Name : {{form_dt.data.data.form_name}}</h1>
-                       
-                       <h2> Label : {{field.label}}</h2>
-                       <h2> Type :  {{field.component}} </h1>
-                       <h2> Description : {{field.description}}</h2>
-                       <h2> Editable : {{field.editable}}</h2>
-                       <h2> Options : {{field.options}}</h2>
-                       <h2> Required : {{field.required}}</h2>
-                       <h2> Validation : {{field.validation}}</h2>
-                       <h2> AutoSelect : {{field.autoselect}}</h2>
-                       <h2> Autofill : {{field.autofill}}</h2>
-
-
-                      <button type="submit" class="btn">Submit Form</button>
-              </div>
-              <!-- Angular Form -->
-
-          </form>
-
+          <div class="container center"> 
+            <button ng-click="clickButton()" class="btn">Get Form</button>
+            </div>
+                     <form class="myForm" id="{{form_dt.data.data.form_id}}" name="{{form_dt.data.data.form_name}}" >
+                        
+                        <div ng-repeat="field in form_dt.data.data.form_fields">
+                            <label for="lbl">{{field.label}}</label>
+                            <input type="{{field.component}}" id="lbl"  ng-required="{{field.required}}" autoselect="{{field.autoselect}}" validation="{{field.validation}}" description="{{field.description}}" editable="{{field.editable}}" />
+                       </div>
+                       <button type="submit" class="btn">Submit Form</button>
+                 
+              
+                     </form>
+           
+                    
+            
+         
+        
 
   </div>
 
