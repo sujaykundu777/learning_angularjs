@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Random Form </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- bundling with webpack -->
+     <script src="dist/bundle.js"></script>
+</head>
+
+<body ng-app="randomForm">
+  <div class="header">
+
+       <h1> Random Form </h1>
+
+  </div>
+  <div class="container center" ng-controller="getFormCtrl">
+            <!-- Form -->
+
+     <button ng-click="clickButton()" class="btn">Get Form</button>
+
+             <div class="form-container center">
+                      <form name="myform" >  
+                          <label for="firstName">Label</label>
+                          <input id="firstName" type="text" >
+                          <button>Submit</button>
+                      </form>
+             </div>
+             <form class="myForm" ng-repeat="field in form_dt.data.data.form_fields">
+
+              <div class="fields">
+
+                       <h1> ID : {{form_dt.data.data.form_id}}</h1>
+                       <h1> Name : {{form_dt.data.data.form_name}}</h1>
+                       
+                       <h2> Label : {{field.label}}</h2>
+                       <h2> Type :  {{field.component}} </h1>
+                       <h2> Description : {{field.description}}</h2>
+                       <h2> Editable : {{field.editable}}</h2>
+                       <h2> Options : {{field.options}}</h2>
+                       <h2> Required : {{field.required}}</h2>
+                       <h2> Validation : {{field.validation}}</h2>
+                       <h2> AutoSelect : {{field.autoselect}}</h2>
+                       <h2> Autofill : {{field.autofill}}</h2>
+
+
+                      <button type="submit" class="btn">Submit Form</button>
+              </div>
+              <!-- Angular Form -->
+
+          </form>
+
+
+  </div>
+
+</body>
+
+</html>
