@@ -41,21 +41,28 @@
                                <label>{{field.label}}
                                 <select description="{{field.description}}" editable="{{field.editable}}">
                                     <div ng-repeat="option in field.options">
-                                        <option></option>
+                                        <option ng-model="field.value" value={{option}}>{{option}}</option>
                                     </div>
                                 </select>
+                              
                                 </label>
                             </div>
-                          </div><!-- End of switch -->
+                            <div ng-switch-when="radio">
+                              <div ng-repeat="option in field.options" class="radio">
+                                <label><input ng-model="field.value" name="$parent.$index" type="radio" value="{{option}}"/>{{option}}</label>
+                              </div>
+                            </div>
+    
+                          <div ng-switch-when="checkbox">
+                             <label>{{field.label}}
+                               <input type="checkbox" description="{{field.description}}" editable="{{field.editable}}" ng-required="{{field.required}}">                                            
+                              </label>
+                          </div>
+                          </div> <!-- End of Switch -->
                         </div>
                        <button type="button" ng-submit="submitForm()" class="btn">Submit Form</button>
                     </form>
-           
-                    
-            
-         
         
-
   </div>
 
 </body>
