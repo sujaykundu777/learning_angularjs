@@ -1,7 +1,9 @@
+import angular from 'angular';
+import ngRoute from 'angular-route'; 
 
 var app = angular.module("myApp",["ngRoute"]);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider,$locationProvider){
    $routeProvider
     .when("/",{
         templateUrl : "../../templates/main.html"
@@ -10,6 +12,7 @@ app.config(function($routeProvider){
         templateUrl : "../../templates/randomform.html",
         controller : "getFormCtrl"
     });
+    $locationProvider.html5Mode(true);
 });
 
 app.controller('getFormCtrl',function($scope ,$http, $log){
