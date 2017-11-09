@@ -11,37 +11,47 @@
                          <form  class="myForm" id="{{form_id}}" name="{{form_name}}" >
                             
                             <div ng-repeat="field in fields">
-                               <div ng-switch="field.component">
-                                 <div ng-switch-when="textinput">
-                                  <label>{{field.label}}
-                                  <input  ng-required="{{field.required}}" ng-model="field.value" autoselect="{{field.autoselect}}" pattern="{{field.validation}}" description="{{field.description}}" editable="{{field.editable}}" />
-                                  </label> 
+
+                              <div ng-switch="field.component">
+                                 
+                                <!-- When Input is Text Input -->
+                                  <div ng-switch-when="textinput">
+                                    <h1> Text Input </h1>
+                          
+                                  <label>{{field.label}}</label> 
+                                  <input id="textinput" ng-required="{{field.required}}" ng-model="field.description" autoselect="{{field.autoselect}}" pattern="{{field.validation}}" description="{{field.description}}" editable="{{field.editable}}" />
+                                  
                                  </div> 
+                                
                                  <div ng-switch-when="textarea">
-                                  <label>{{field.label}}
-                                  <textarea ng-required="{{field.required}}" pattern="{{field.validation}}" editable="{{field.editable}}"></textarea>
-                                  </label>
+                                   <h1> Text Area </h1>
+                                  <label>{{field.label}}  </label>
+                                  <textarea id="textarea" ng-required="{{field.required}}" ng-model="field.description" pattern="{{field.validation}}" editable="{{field.editable}}"></textarea>
+                                
                                 </div>
                                 <div ng-switch-when="select">
-                                   <label>{{field.label}}
-                                    <select description="{{field.description}}" editable="{{field.editable}}">
+                                   <label>{{field.label}}    </label>
+                                   
                                         <div ng-repeat="option in field.options">
-                                            <option ng-model="field.value" value={{option}}>{{option}}</option>
+                                          <select ng-model="field.options" name="$parent.$index" type="select" value="{{option}}"/>{{option}}</select>
                                         </div>
-                                    </select>
-                                  
-                                    </label>
+      
+                                
                                 </div>
                                 <div ng-switch-when="radio">
+                                  <h1> Radio Buttons</h1>
+                                  <label>{{field.description}}</label>
                                   <div ng-repeat="option in field.options" class="radio">
-                                    <label><input ng-model="field.value" name="$parent.$index" type="radio" value="{{option}}"/>{{option}}</label>
+                                   <input id="radio" ng-model="field.options" name="$parent.$index" type="radio" value="{{option}}"/>{{option}}
                                   </div>
                                 </div>
         
                               <div ng-switch-when="checkbox">
-                                 <label>{{field.label}}
-                                   <input type="checkbox" description="{{field.description}}" editable="{{field.editable}}" ng-required="{{field.required}}">                                            
-                                  </label>
+                                  <span ng-repeat="option in field.options">
+                                      <input type="checkbox" ng-checked="response.indexOf(option) !== -1" id="{{option}}" ng-model="selectedList[option]" value="{{option}}"/>
+                                      <label for="{{option}}">{{option}}</label>
+                                  </span>
+                                  </div>
                               </div>
                               </div> <!-- End of Switch -->
                             </div>

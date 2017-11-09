@@ -86,6 +86,9 @@ app.config(function($routeProvider,$locationProvider){
     .when("/randomform",{
         templateUrl : "../../templates/randomform.html",
         controller : "getFormCtrl"
+    })
+    .otherwise({
+         redirectTo: "/"
     });
     $locationProvider.html5Mode(true);
 });

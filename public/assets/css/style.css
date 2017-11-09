@@ -12,6 +12,20 @@ html,body{
   padding: 40px;
   margin-top:50px;
 }
+label{
+  float:left;
+  display: block;
+}
+#textinput,#textarea{
+  width:350px;
+  height: 40px;
+  padding:2px;
+  font-size:14px;
+  float:left;
+}
+#radio{
+  
+}
 .center{
   text-align: center;
 }
@@ -30,7 +44,6 @@ html,body{
   width: 300px;
   height: 100px;
   padding:20px;
-
 }
 .fields{
   border:1px solid #111;

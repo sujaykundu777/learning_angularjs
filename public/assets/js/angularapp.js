@@ -11,6 +11,9 @@ app.config(function($routeProvider,$locationProvider){
     .when("/randomform",{
         templateUrl : "../../templates/randomform.html",
         controller : "getFormCtrl"
+    })
+    .otherwise({
+         redirectTo: "/"
     });
     $locationProvider.html5Mode(true);
 });
@@ -24,8 +27,10 @@ app.controller('getFormCtrl',function($scope ,$http, $log){
            //storing the response
         //  $scope.form_dt = response;
           $scope.fields = response.data.data.form_fields;
+          $scope.text = response.data.data.form_fields.description;
           $scope.form_id = response.data.data.form_id;
           $scope.form_name = response.data.data.form_name;
+        
             //log the response
             $log.info(response);
     
